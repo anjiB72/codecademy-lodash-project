@@ -64,8 +64,26 @@ var _ = {
         return droppedArray;
     },
     
-   
+   dropWhile(array, predicate){
+       const cb = (element, index) =>{
+           return !predicate(element, index, array);
+       }
+       var dropNumber = array.findIndex(cb);
+       var droppedArray = this.drop(array, dropNumber);
+       return droppedArray;
+   },
 
+   chunk(array, size){
+       if(size === undefined){
+           size = 1;
+       }
+       let arrayChunks = [];
+       for (let i=0; i<array.length; i+=size){
+           var arrayChunk = array.slice(i, i+size);
+           arrayChunks.push(arrayChunk);
+       }
+       return arrayChunks;
+   }
 };
 
 
