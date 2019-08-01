@@ -37,7 +37,35 @@ var _ = {
         if (hasValue != undefined){
             return true;
         } return false;
-    } 
+    },
+    invert(object){
+        let invertedObject = {};
+        for( key in object){
+            var originalValue = object[key];
+            invertedObject[originalValue] = key;            
+        }
+        return invertedObject;
+    },
+    findKey(object, predicate){
+        for(key in object){
+            var value = object[key];
+            predicateReturnValue = predicate(value);
+            if(predicateReturnValue === true){
+                return key;
+            } 
+        return undefined;
+        };
+    },
+    drop(array, n){
+        if (n === undefined){
+            n = 1;
+        }
+        var droppedArray = array.slice(n, array.length);
+        return droppedArray;
+    },
+    
+   
+
 };
 
 
